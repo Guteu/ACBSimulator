@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <a href="./index.html">voltar para o inicio</a>
+    </div>
+    <h1>mahoraga simulator</h1>
+    <h2>your team</h2>
+    <div>
+        <select class="team">
+            <option value="empty">choose a card</option>
+            <option value="Masked Leader" selected>Masked Leader</option>
+            <option value="Adaptive Titan">Adaptive Titan</option>
+        </select>
+    </div>
+
+    <div>
+        <select class="team">
+            <option value="empty">choose a card</option>
+            <option value="Masked Leader" selected>Masked Leader</option>
+            <option value="Adaptive Titan">Adaptive Titan</option>
+        </select class="team">
+    </div>
+
+    <div>
+        <select class="team">
+            <option value="empty">choose a card</option>
+            <option value="Masked Leader">Masked Leader</option>
+            <option value="Adaptive Titan" selected>Adaptive Titan</option>
+        </select class="team">
+    </div>
+
+    <div>
+        <select class="team">
+            <option value="empty">choose a card</option>
+            <option value="Masked Leader" selected>Masked Leader</option>
+            <option value="Adaptive Titan">Adaptive Titan</option>
+        </select>
+    </div>
+
+    <button onclick="battle()">calculate battle</button>
+    <script>
+        let cards = [
+            {
+                cardName: "Masked Leader",
+                health: 352,
+                attack: 176
+            },
+            {
+                cardName: "Skibidi Goat",
+                health: 132,
+                attack: 30
+            },
+            {
+                cardName: "Goat",
+                health: 2,
+                attack: 30
+            },
+            {
+                cardName: "Adaptive Titan",
+                health: 5632,
+                attack: 1690
+            }
+        ];
+
+        function getTeam() {
+            let cardSelect = document.getElementsByClassName('team');
+            let team = [];
+            for (let i = 0; i < 4; i++) {
+                if (cardSelect[i].value == "empty") {
+                } else {
+                    team.push(cardSelect[i].value);
+                }
+            }
+            return team
+        }
+        function checkTeam(card) {
+            for (let i = 0; i < cards.length; i++) {
+                if (cards[i].cardName === card) {
+                    return true
+                }
+            }
+            return false
+        }
+
+        function battle() {
+            console.log(cards[0].cardName)
+            let team = getTeam();
+            console.log(team)
+            let battleTeam = []
+            battleTeam = team.map(teamMember => {
+                const index = cards.findIndex(card => card.cardName === teamMember)
+                if (index !== -1) return cards[index]
+                return null
+            }).filter(teamMember => teamMember !== null) // tira todos os nulls
+
+            console.log(battleTeam)
+            console.log(cards)
+
+            //batalha
+
+        }
+    </script>
+</body>
+
+</html>

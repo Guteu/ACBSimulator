@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td, th {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a href="./index.html">voltar para o inicio</a>
+    </div>
+    <section>
+        <h1>Calcular cartas que você vai ganhar</h1>
+        <table>
+            <tr>
+                <th>floor</th>
+                <th>Cartas que você vai ganhar</th>
+            </tr>
+            <tr>
+                <td><input type="number" on oninput="calculate()" id="floor"></td>
+                <td id="cardsEarned"></td>
+            </tr>
+        </table>
+    </section>
+    <script>
+        let cardsEarned = document.getElementById("cardsEarned");
+
+        function calculate(){
+            let floor = document.getElementById("floor").value;
+            let loot = ((1.15 * (floor ** 1.47)));
+            cardsEarned.innerText = Math.round(loot);
+        }
+    </script>
+</body>
+</html>
